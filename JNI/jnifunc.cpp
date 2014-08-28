@@ -9,11 +9,15 @@ JNIEXPORT jobject JNICALL Java_JniFuncMain_createJniObject(JNIEnv *env, jclass c
     jint staticIntField;
     jint result;
 
+    // get staticIntField's fid
     fid = env->GetStaticFieldID(clazz, "staticIntField","I");
+
+    //get staticIntField's value
     staticIntField = env->GetStaticIntField(clazz,fid);
     printf("[CPP] get JniFuncMain class's staticfield value\n");
     printf("JniFuncMain.staticIntField = %d\n",staticIntField);
 
+    // get Class
     targetClass = env->FindClass("JniTest");
 
     mid = env->GetMethodID(targetClass, "<init>","(I)V");
